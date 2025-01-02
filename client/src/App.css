@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+main {
+  padding-top: 80px; /* Match the height of the header */
+}
