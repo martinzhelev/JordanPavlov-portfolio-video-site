@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Futura BT';
+  src: url('../public/fonts/futura-medium-bt.ttf') format('ttf'),
+       
+  font-weight; normal:
+  font-style; normal:font-style
+}
+
+body {
+  font-family: 'Futura BT', sans-serif;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

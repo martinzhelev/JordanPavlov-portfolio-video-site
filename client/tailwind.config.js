@@ -1,10 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Include your JSX files
+    "./src/**/*.{html,js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        futura: ['Futura BT', 'sans-serif'], // Add Futura BT to the font family
+      },
+    },
   },
   plugins: [],
-};
+}
+

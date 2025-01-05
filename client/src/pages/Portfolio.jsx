@@ -13,7 +13,7 @@ const Portfolio = () => {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6">
+        <div className=" flex flex-col items-center justify-center min-h-screen bg-black text-white p-6">
             <h1 className="text-5xl font-bold text-white mb-6 text-center">Our Portfolio</h1>
             <p className="text-lg text-gray-300 text-center max-w-3xl mb-8">
                 Explore our projects by folders.
@@ -35,7 +35,7 @@ const Portfolio = () => {
                                 alt={`Folder thumbnail for ${folder.name}`}
                                 className="rounded-lg shadow-md mb-4"
                             />
-                            <h2 className="text-xl font-bold text-blue-400">{folder.name}</h2>
+                            <h2 className="text-xl font-bold text-white">{folder.name}</h2>
                         </div>
                     ))}
                 </div>
@@ -44,7 +44,7 @@ const Portfolio = () => {
             {selectedFolder && (
                 <div className="w-full max-w-6xl">
                     <button
-                        className="text-blue-400 mb-4"
+                        className="text-white mb-4"
                         onClick={() => {
                             setSelectedFolder(null);
                             setSelectedVideo(null);
@@ -55,11 +55,15 @@ const Portfolio = () => {
 
                     <div className="mb-6">
                         {selectedVideo && (
-                            <video
-                                controls
-                                className="w-full rounded-lg shadow-md aspect-video object-cover"
-                                src={selectedVideo.url}
-                            />
+                           <iframe
+                           className="w-full rounded-lg shadow-md aspect-video"
+                           src={selectedVideo.url}
+                           title={selectedVideo.title || "Video"}
+                           frameBorder="0"
+                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                           allowFullScreen
+                         ></iframe>
+                         
                         )}
                     </div>
 

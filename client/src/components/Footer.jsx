@@ -4,8 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto text-center">
-        {/* Title */}
-        <h2 className="text-2xl font-semibold text-blue-400 mb-6">Get in Touch</h2>
+       
 
         {/* Social and Contact Links */}
         <div className="flex justify-center gap-8 mb-6">

@@ -37,7 +37,7 @@ const Header = () => {
 
         {/* Business Name */}
         <h1 className="text-2xl md:text-4xl font-bold text-center md:order-2 md:flex-grow mr-0 md:mr-20">
-          <Link to="/">Your Business Name</Link>
+          <Link to="/">Cinematography</Link>
         </h1>
 
         {/* Hamburger Menu Toggle */}
@@ -54,16 +54,19 @@ const Header = () => {
       {/* Desktop Navbar (doesn't overlay content) */}
       <nav className="hidden md:flex justify-center space-x-10 bg-black py-4">
         <Link to="/" className="hover:text-gray-400">
-          Home
+          HOME
         </Link>
         <Link to="/portfolio" className="hover:text-gray-400">
-          Portfolio
+          PORTFOLIO
+        </Link>
+        <Link to="/rental" className="hover:text-gray-400">
+          RENTAL
         </Link>
         <Link to="/about" className="hover:text-gray-400">
-          About Us
+          ABOUT
         </Link>
         <Link to="/contact" className="hover:text-gray-400">
-          Contact
+          CONTACT
         </Link>
       </nav>
 
@@ -75,28 +78,35 @@ const Header = () => {
             className="text-white text-xl mb-6"
             onClick={() => setIsMenuOpen(false)}
           >
-            Home
+            HOME
           </Link>
           <Link
             to="/portfolio"
             className="text-white text-xl mb-6"
             onClick={() => setIsMenuOpen(false)}
           >
-            Portfolio
+            PORTFOLIO
+          </Link>
+          <Link
+            to="/rental"
+            className="text-white text-xl mb-6"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            RENTAL
           </Link>
           <Link
             to="/about"
             className="text-white text-xl mb-6"
             onClick={() => setIsMenuOpen(false)}
           >
-            About Us
+            ABOUT
           </Link>
           <Link
             to="/contact"
             className="text-white text-xl"
             onClick={() => setIsMenuOpen(false)}
           >
-            Contact
+            CONTACT
           </Link>
         </div>
       )}
