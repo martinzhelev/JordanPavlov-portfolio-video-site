@@ -20,24 +20,7 @@ const About = () => {
       </p>
 
       {/* Team Section */}
-      <div className="mt-10 text-center">
-        <h2 className="text-3xl font-semibold text-white mb-4">Our Team</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {aboutData.team.map((member) => (
-            <div key={member.name} className="text-center">
-              {/* Team Member Picture */}
-              <img
-                src={member.image_url}
-                alt={member.name}
-                className="w-32 h-32 mx-auto rounded-full object-cover mb-4"
-              />
-              {/* Team Member Name and Position */}
-              <h3 className="text-xl font-semibold text-white">{member.name}</h3>
-              <p className="text-lg text-gray-300">{member.position}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+     
     </div>
   );
 };

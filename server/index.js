@@ -108,40 +108,39 @@ app.get("/api/rentals", (req, res) => {
       }
     });
   });
-  app.get("/api/rental-categories", (req, res) => {
-    const query = "SELECT * FROM rental_categories";
-  
-    db.query(query, (err, results) => {
-      if (err) {
-        console.error("Error fetching rental categories:", err);
-        res.status(500).json({ error: "Failed to fetch rental categories" });
-      } else {
-        res.json(results);
-      }
+
+
+  app.get("/api/rentals-page", (req, res) => {
+    const categoryQuery = "SELECT * FROM rental_categories";
+    const rentalsQuery = "SELECT * FROM rentals";
+
+    db.query(categoryQuery, (categoryErr, categoryResults) => {
+        if (categoryErr) {
+            console.error("Error fetching categories:", categoryErr);
+            return res.status(500).json({ error: "Failed to fetch categories" });
+        }
+
+        db.query(rentalsQuery, (rentalsErr, rentalResults) => {
+            if (rentalsErr) {
+                console.error("Error fetching rentals:", rentalsErr);
+                return res.status(500).json({ error: "Failed to fetch rentals" });
+            }
+
+            // Organize rentals under their categories
+            const categoriesWithRentals = categoryResults.map((category) => ({
+                ...category,
+                rentals: rentalResults.filter((rental) => rental.category_id === category.id),
+            }));
+
+            res.json(categoriesWithRentals);
+        });
     });
-  });
-  // Fetch rentals by category
-  app.get("/api/rentals", (req, res) => {
-    const categoryId = req.query.category_id;
+});
+
+
+
+
   
-    let query = "SELECT * FROM rentals";
-    const params = [];
-  
-    if (categoryId) {
-      query += " WHERE category_id = ?";
-      params.push(categoryId);
-    }
-  
-    console.log("Executing query:", query, "with params:", params);
-  
-    db.query(query, params, (err, results) => {
-      if (err) {
-        console.error("Error fetching rentals:", err);
-        return res.status(500).json({ error: "Failed to fetch rentals" });
-      }
-      res.json(results);
-    });
-  });
   
   
 //   app.post("/api/about", (req, res) => {
@@ -239,33 +238,9 @@ app.post("/api/videos/homepage", (req, res) => {
   });
 
   
-  app.post("/api/team", (req, res) => {
-    const { name, position, imageUrl } = req.body;
-    const query = "INSERT INTO team_members (name, position, image_url) VALUES (?, ?, ?)";
-  
-    db.query(query, [name, position, imageUrl], (err, result) => {
-      if (err) {
-        console.error("Error adding team member:", err);
-        return res.status(500).json({ error: "Failed to add team member" });
-      }
-      res.json({ message: "Team member added successfully", memberId: result.insertId });
-    });
-  });
 
-  
-  app.put("/api/team/:id", (req, res) => {
-    const { name, position, imageUrl } = req.body;
-    const { id } = req.params;
-    const query = "UPDATE team_members SET name = ?, position = ?, image_url = ? WHERE id = ?";
-  
-    db.query(query, [name, position, imageUrl, id], (err) => {
-      if (err) {
-        console.error("Error updating team member:", err);
-        return res.status(500).json({ error: "Failed to update team member" });
-      }
-      res.json({ message: "Team member updated successfully" });
-    });
-  });
+
+ 
 
   app.delete("/api/folders/:id", (req, res) => {
     const { id } = req.params;
@@ -306,32 +281,8 @@ app.post("/api/videos/homepage", (req, res) => {
       res.json({ message: "Video deleted successfully" });
     });
   });
+
   
-  app.delete("/api/team/:id", (req, res) => {
-    const { id } = req.params;
-  
-    const query = "DELETE FROM team_members WHERE id = ?";
-    db.query(query, [id], (err, result) => {
-      if (err) {
-        console.error("Error deleting team member:", err);
-        return res.status(500).json({ error: "Failed to delete team member" });
-      }
-      res.json({ message: "Team member deleted successfully" });
-    });
-  });
-  
-  
-  
-  app.get("/api/team", (req, res) => {
-    const query = "SELECT * FROM team_members";
-    db.query(query, (err, results) => {
-      if (err) {
-        console.error("Error fetching team members:", err);
-        return res.status(500).json({ error: "Failed to fetch team members" });
-      }
-      res.json(results);
-    });
-  });
   
 
 

@@ -238,43 +238,7 @@ const AdminDashboard = () => {
         </button>
       </div>
 
-      {/* Manage Team */}
-      <div className="w-full max-w-4xl bg-gray-800 rounded-lg shadow-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4">Team Members</h2>
-        <div className="mb-4">
-          {team.map((member) => (
-            <div key={member.id} className="text-gray-300">
-              {member.name} - {member.position}
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col space-y-4">
-          <input
-            type="text"
-            placeholder="Name"
-            className="p-3 rounded-lg bg-gray-700 text-white"
-            onChange={(e) => setNewTeamMember({ ...newTeamMember, name: e.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Position"
-            className="p-3 rounded-lg bg-gray-700 text-white"
-            onChange={(e) => setNewTeamMember({ ...newTeamMember, position: e.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Image URL"
-            className="p-3 rounded-lg bg-gray-700 text-white"
-            onChange={(e) => setNewTeamMember({ ...newTeamMember, imageUrl: e.target.value })}
-          />
-          <button
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg"
-            onClick={addTeamMember}
-          >
-            Add Member
-          </button>
-        </div>
-      </div>
+      
        <div className="w-full max-w-4xl bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
         <h2 className="text-2xl font-semibold mb-4">Manage Folders</h2>
         <div className="flex items-center space-x-4">
@@ -321,22 +285,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-4xl bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
-        <h2 className="text-2xl font-semibold mb-4">Delete Team Member</h2>
-        <div className="flex flex-col space-y-4">
-          {team.map((member) => (
-            <div key={member.id} className="flex items-center justify-between">
-              <span>{member.name} - {member.position}</span>
-              <button
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
-                onClick={() => deleteTeamMember(member.id)}
-              >
-                Delete
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
+      
 
     </div>
   );
